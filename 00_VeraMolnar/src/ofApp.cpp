@@ -7,7 +7,6 @@ void ofApp::setup(){
     goBack = true;
     count = 0;
     cycleLength = 120;
-//    ofSeedRandom(5000);
     
     for(int i = 0; i < 5; i++){
         for(int j = 0; j <5; j++){
@@ -21,7 +20,9 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     time = ofGetElapsedTimef();
-//    int intTime = static_cast<int>(time);
+    for (int i = 0; i < 5; i++){
+        rowShift[i] = ofSignedNoise(time + i, time) * 0.5;
+    }
     
     if(count == cycleLength){
         goBack = !goBack;
@@ -30,20 +31,17 @@ void ofApp::update(){
     
     if(!goBack){
         count++;
-        if (count < cycleLength / 4){
+        if (count < cycleLength / 6){
             for(int i = 0; i < 5; i++){
-                float yShift = ofSignedNoise(time + i, time) * 2;
+                columnShift = ofSignedNoise(time + i, time) * 2;
                  for(int j = 0; j <5; j++){
-                     //ADD xShift
-                     float translateX = ofSignedNoise(time + i, time + j) * 0.15;
-//                     float translateX = ofSignedNoise(time, j) * 0.15;
-                     float translateY = ofSignedNoise(time + j, time + i) * 0.5 + yShift;
+                     float translateX = ofSignedNoise(time + i, time + j) * 0.1 + rowShift[j] * 0.35;
+                     float translateY = ofSignedNoise(time + j, time + i) * 0.5 + columnShift;
                      columns[i][j].translate(translateX, translateY);
                  }
              }
         }
     } else {
-//        std::cout << "intTime: " << "hello" << endl;
         count++;
         for(int i = 0; i < 5; i++){
             for(int j = 0; j <5; j++){

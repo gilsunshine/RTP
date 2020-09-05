@@ -21,13 +21,14 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-        float time;
-        
         bool goBack;
-    
         int count;
         int cycleLength;
-    
+        
+        float time;
+        float rowShift [5];
+        float columnShift;
+
         ofRectangle columns[5][5];
         ofVec2f startingPoints[5][5];
 };
