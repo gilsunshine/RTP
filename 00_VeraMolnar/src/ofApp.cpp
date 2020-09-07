@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetBackgroundColor(223, 223, 226); // slightly blue background
-    ofSetColor(0, 0, 3, 200); // slightly blue squares
+    ofSetColor(0, 0, 3, 200); // slightly blue squares  
     goBack = true;
     count = 0;
     cycleLength = 120;
