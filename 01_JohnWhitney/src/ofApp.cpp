@@ -287,7 +287,7 @@ void ofApp::draw(){
         for(int i = 0; i < numCurves; i++){
             ofPushMatrix();
             ofTranslate(lines[i].getVertices()[0]);
-            ofEnableDepthTest();
+//            ofEnableDepthTest();
             ofEnableBlendMode(OF_BLENDMODE_ADD);
             float phaseShift = sin(i*0.001);
             float angle = time + ofMap(sin(time + (i+1) * phaseShift) * sin(time*(i+1)*0.01), -1, 1, 0, 2*PI);//DO NOT CHANGE
