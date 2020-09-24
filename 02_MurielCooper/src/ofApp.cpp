@@ -54,11 +54,13 @@ void ofApp::draw(){
     
         paths[0].setPolyWindingMode(OF_POLY_WINDING_ODD);
         vector < ofPolyline > lines = paths[0].getOutline();
-
+    
         for (int j = 0; j < lines.size(); j++){
 
             lines[j].setClosed(true);
             lines[j] = lines[j].getResampledBySpacing(3);
+            
+            
 
              for(int g = grid; g < ofGetWidth(); g+=grid){
                     ofSetColor(255,50);
