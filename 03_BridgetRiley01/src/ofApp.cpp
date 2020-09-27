@@ -39,7 +39,7 @@ void ofApp::draw(){
             
             if((i + j) % 2 == 0){
                 
-                float shift = ofMap(sin(0.2*(time - j)), -1, 1, 0, 1);
+                float shift = ofMap(sin(0.2*(time - j) + sin(i * PI / xGrid)), -1, 1, 0, 1);
                 ofPushMatrix();
                 ofTranslate(i * xSpacing, yTrans);
                 ofSetPolyMode(OF_POLY_WINDING_NONZERO);
