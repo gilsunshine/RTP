@@ -26,5 +26,6 @@ class ofApp : public ofBaseApp{
     float ySpacing;
     float yTrans;
     float ySpaces [34];
+    float scale;
 
 };

@@ -4,13 +4,14 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(255);
-    xGrid = 13;
-    yGrid = 34;
+    xGrid = 12;
+    yGrid = 28;
     xSpacing = ofGetWidth()/xGrid;
     ySpacing = 0;
     yTrans = 0;
+    scale = 1.44;
     for (int i = 0; i < yGrid; i ++){
-        ySpaces[i] = ofMap(sin(i * PI/yGrid), 0, 1, 5, yGrid);
+        ySpaces[i] = ofMap(sin(i * PI/yGrid), 0, 1, 5, yGrid) * scale;
     }
 
 }
@@ -26,7 +27,7 @@ void ofApp::draw(){
     float time = ofGetElapsedTimef();
     
     for (int j = 0; j <= yGrid; j++){
-        ySpacing = ofMap(sin(j * PI/yGrid), 0, 1, 5, yGrid);
+        ySpacing = ofMap(sin(j * PI/yGrid), 0, 1, 5, yGrid) * scale;
 
         if(j > 0){
             yTrans += ySpaces[j - 1];
