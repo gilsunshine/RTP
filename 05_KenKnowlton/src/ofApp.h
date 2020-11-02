@@ -29,5 +29,11 @@ class ofApp : public ofBaseApp{
         ofImage leaf00;
         ofImage leaf01;
         ofImage leaf02;
+
+        ofImage hat;
+        ofImage shirt;
+        ofImage pants;
+        ofImage shoes;
+        ofImage button;
 		
 };

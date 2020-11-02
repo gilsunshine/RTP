@@ -5,6 +5,13 @@ void ofApp::setup(){
     leaf00.load("images/leaf00.png");
     leaf01.load("images/leaf01.png");
     leaf02.load("images/leaf02.png");
+    hat.load("images/hat.png");
+    shirt.load("images/shirt.png");
+    button.load("images/button.png");
+    pants.load("images/pants.png");
+    shoes.load("images/shoes.png");
+
+
 
     camWidth = ofGetWidth();
     camHeight = ofGetHeight();
@@ -42,28 +49,52 @@ void ofApp::draw(){
 
         if(vidGrabber.isFrameNew()){
             ofPixels & pixels = vidGrabber.getPixels();
-            
-            for(size_t i = 0; i < pixels.getWidth(); i+=10){
-                for(size_t j = 0; j < pixels.getHeight(); j+=10){
-                    ofColor color = pixels.getColor(i, j);
-                    float brightness = color.getBrightness();
-                    ofPushMatrix();
-                    ofTranslate(i,j);
-                    ofRotateRad(ofMap(ofNoise(i,j),0,1,0,2*PI));
-
-                    if( brightness < 100){
-                        float brightScale = ofMap(brightness, 0, 100, .25, .75);
-                        leaf00.draw(0,0, leaf00.getWidth() * brightScale, leaf00.getHeight() * brightScale);
-                    }else if(brightness < 120){
-                        float brightScale = ofMap(brightness, 100, 120, .25, .75);
-                        leaf01.draw(0,0, leaf01.getWidth() * brightScale, leaf01.getHeight() * brightScale);
-                    }else if (brightness < 160){
-                        float brightScale = ofMap(brightness, 120, 160, .25, .75);
-                        leaf02.draw(0,0, leaf02.getWidth() * brightScale, leaf02.getHeight() * brightScale);
+                for(size_t i = 0; i < pixels.getWidth(); i+=10){
+                    for(size_t j = 0; j < pixels.getHeight(); j+=10){
+                        ofColor color = pixels.getColor(i, j);
+                        float brightness = color.getBrightness();
+                        ofPushMatrix();
+                        ofTranslate(i,j);
+                        ofRotateRad(ofMap(ofNoise(i,j),0,1,0,2*PI));
+    
+                        if( brightness <50){
+                            float brightScale = ofMap(brightness, 0, 100, .25, .5);
+                            shoes.draw(0,0, shoes.getWidth() * brightScale, shoes.getHeight() * brightScale);
+                        }else if(brightness < 100){
+                            float brightScale = ofMap(brightness, 100, 120, .25, .5);
+                            pants.draw(0,0, pants.getWidth() * brightScale, pants.getHeight() * brightScale);
+                        }else if(brightness < 120){
+                            float brightScale = ofMap(brightness, 100, 120, .25, .5);
+                            hat.draw(0,0, hat.getWidth() * brightScale, hat.getHeight() * brightScale);
+                        }else if (brightness < 160){
+                            float brightScale = ofMap(brightness, 120, 160, .25, .5);
+                            shirt.draw(0,0, shirt.getWidth() * brightScale, button.getHeight() * brightScale);
+                        }
+                        ofPopMatrix();
                     }
-                    ofPopMatrix();
                 }
-            }
+            
+//            for(size_t i = 0; i < pixels.getWidth(); i+=10){
+//                for(size_t j = 0; j < pixels.getHeight(); j+=10){
+//                    ofColor color = pixels.getColor(i, j);
+//                    float brightness = color.getBrightness();
+//                    ofPushMatrix();
+//                    ofTranslate(i,j);
+//                    ofRotateRad(ofMap(ofNoise(i,j),0,1,0,2*PI));
+//
+//                    if( brightness < 100){
+//                        float brightScale = ofMap(brightness, 0, 100, .25, .75);
+//                        leaf00.draw(0,0, leaf00.getWidth() * brightScale, leaf00.getHeight() * brightScale);
+//                    }else if(brightness < 120){
+//                        float brightScale = ofMap(brightness, 100, 120, .25, .75);
+//                        leaf01.draw(0,0, leaf01.getWidth() * brightScale, leaf01.getHeight() * brightScale);
+//                    }else if (brightness < 160){
+//                        float brightScale = ofMap(brightness, 120, 160, .25, .75);
+//                        leaf02.draw(0,0, leaf02.getWidth() * brightScale, leaf02.getHeight() * brightScale);
+//                    }
+//                    ofPopMatrix();
+//                }
+//            }
         }
 }
 
