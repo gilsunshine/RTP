@@ -24,10 +24,6 @@ class ofApp : public ofBaseApp{
         void gotMessage(ofMessage msg);
     
         ofVideoGrabber grabber;
-        ofImage camGray;
-        ofImage prevGray;
-        ofImage diffImg;
-        ofImage threshImg;
         ofxCv::ContourFinder finder;
 
         ofColor targetColor;
